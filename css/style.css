@@ -1,0 +1,85 @@
+/*1. VARIABLES & CONFIGURATION GLOBALE (:root)*/
+@import url('https://fonts.googleapis.com/css2?family=...&display=swap');
+
+:root{
+    /* Palette de couleurs (Max 5 couleurs selon le sujet) */
+    --primary-color: #112233;   /* Bleu nuit pour la navbar et les titres */
+    --secondary-color: #1a365d;
+    --accent-color: #ff9f43;    /* Couleur vive pour le survol et les détails importants */
+    --bg-light: #f7fafc;        
+    --text-dark: #2d3748;   /* Texte standard */
+    --main-radius: 12px;
+
+    /* Typographies (Min 2 polices) */
+    /* Votre typographie (Assurez-vous d'avoir mis l'import Google Fonts en haut) */
+    --font-title: 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'NomPoliceCorps', sans-serif;
+
+    /* Espacements & Rayons */
+    --main-padding: 2rem;
+    --border-radius-bento: 16px;
+    
+
+}
+
+/*2. RESET & STYLES DE BASE*/
+*, ::after ::before{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    color: var(--text-dark);
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: var(--font-title);
+
+}
+
+ #hero{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(../images/20190725-thefutureofworkafrica780.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 60px 0;
+ }
+/* 1. Personnalisation du fond de la navbar */
+.navbar.bg-dark {
+    background-color: var(--primary-color) !important; /* Force l'utilisation de votre couleur primaire */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);       /* Ajoute une ombre légère sous la navbar */
+    padding: 15px 0;                                 /* Donne un peu d'espace en haut et en bas */
+}
+/* Rendre le logo (l'image de la carte d'Afrique) bien proportionné */
+.navbar-brand img {
+    border-radius: 50px; /* Rend l'icône de fond blanche légèrement arrondie si besoin */
+    object-fit: cover;
+
+}
+#moi{
+    color: #57a4dfdf;
+}
+
+/* 3. Alignement et styles des liens de navigation */
+.navbar-nav .nav-link {
+    font-family: var(--font-title);
+    font-weight: 500;
+    padding: 0 15px !important; /* Espacement horizontal entre les 6 liens */
+    transition: color 0.3s ease; /* Transition douce pour l'effet de survol */
+}
+
+/* Effet au survol (hover) sur les liens de navigation */
+.navbar-nav .nav-link:hover {
+    color: var(--accent-color) !important; /* Le lien change de couleur au passage de la souris */
+}
+
+/* Style du lien actif (la page où l'on se trouve) */
+.navbar-nav .nav-link.active {
+    color: var(--accent-color) !important;
+    font-weight: 600;
+}

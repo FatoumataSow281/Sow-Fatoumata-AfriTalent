@@ -83,3 +83,153 @@ h1, h2, h3, h4, h5, h6{
     color: var(--accent-color) !important;
     font-weight: 600;
 }
+.section-title{
+    position: relative;
+    padding-bottom: 15px;
+    font-weight: 700;
+}
+
+
+
+.btn-hero-primary {
+    background-color: var(--primary-color);
+    color: #ffffff !important;
+    padding: 12px 24px;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+.btn-hero-primary:hover {
+    background-color: var(--secondary-color);
+}
+
+.btn-hero-secondary {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 11px 24px;
+    font-weight: 600;
+    border-radius: 8px;
+    background: transparent;
+}
+
+.btn-hero-secondary:hover {
+    background-color: var(--primary-color);
+    color: #ffffff !important;
+}
+
+#stats .stat-box {
+    background:var(--secondary-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+#stats .num {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    display: block;
+}
+
+/* --- 2. STRUCTURATION BENTO GRID (CSS Grid) --- */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes égales sur Desktop */
+    gap: 24px;
+}
+
+.bento-card {
+    background: #ffffff;
+    border-radius: 16px; /* Bord arrondi style Bento Box */
+    padding: 35px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.02);
+}
+
+.bento-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.bento-step {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.bento-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+/* Classes asymétriques Bento */
+.bento-w-2 {
+    grid-column: span 2; /* S'étend sur 2 colonnes pour casser la symétrie */
+}
+
+/* --- 3. MICRO-INTERACTIONS & EFFETS HOVER (Catégories) --- */
+.category-card {
+    background: #ffffff;
+    padding: 30px 20px;
+    border-radius: 12px;
+    text-center: center;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    /* Transition fluide indispensable */
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+}
+
+.category-card .card-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    display: inline-block;
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+}
+
+.category-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+/* L'effet Hover demandé par le sujet */
+.category-card:hover {
+    transform: translateY(-8px); /* Légère élévation verticale */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12); /* Ombre portée plus profonde */
+    border-color: transparent;
+}
+
+.category-card:hover .card-icon {
+    color: var(--accent-color); /* L'icône réagit également au survol */
+}
+
+/* --- 4. CAROUSEL DES TÉMOIGNAGES --- */
+.bg-light-section {
+    background-color: #fcfdfe;
+}
+
+.testimonial-img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%; /* Image ronde */
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+}
+
+/* --- 5. BANDEAU D'APPEL À L'ACTION (CTA HOME) --- */
+#cta-home {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+.btn-cta-light {
+    background-color: #ffffff;
+    color: var(--primary-color) !important;
+    padding: 14px 32px;
+    font-weight: 700;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease;
+}
+
+.btn-cta-light:hover {
+    transform: scale(1.05);
+}

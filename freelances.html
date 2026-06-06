@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AfriTalent — freelances</title>
-    <!-- Bootstrap 5 via CDN : feuille de style -->
+    <title>AfriTalent — Freelances</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Votre feuille de style personnelle -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 </head>
 <body>
-    <!-- Le contenu de la page sera ajoute ici -->
+
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="index.html"><img src="images/94127101-raster-carte-afrique-carte-isolé-sur-fond-blanc-continent-icône-indienne.jpg" alt="logo officiel de AfriTalent" width="50px">Afri<span id="moi">Talent</span></a>
+            <a class="navbar-brand" href="index.html">
+                <img src="images/94127101-raster-carte-afrique-carte-isolé-sur-fond-blanc-continent-icône-indienne.jpg" alt="logo officiel de AfriTalent" width="50px"> Afri<span id="moi">Talent</span>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navMenu">
                 <ul class="navbar-nav ms-auto">
@@ -28,8 +28,8 @@
                     <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
-                <a href="contact.html" class="btn btn-primary ms-3">Rejoindre AfriTalent</a>
-                <button id="theme-toggle" class="btn btn-outline-secondary ms-2" aria-label="changer de théme">
+                <a href="contact.html" class="btn btn-primary ms-lg-3 mt-3 mt-lg-0 d-block d-lg-inline-block">Rejoindre AfriTalent</a>
+                <button id="theme-toggle" class="btn btn-outline-secondary ms-lg-2 mt-2 mt-lg-0" aria-label="changer de thème">
                     <i class="bi bi-moon"></i>
                 </button>
             </div>
@@ -37,202 +37,215 @@
     </nav>
 </header>
 
-<main>
-        <div class="container">
-            <h1>Nos Talents Tech disponibles</h1>
+<main class="py-5">
+    <div class="container">
+        <h1 class="mb-4 display-5 fw-bold  text-gradient">Nos Talents Tech disponibles</h1>
 
-            <section id="filters" class="my-4">
-                <button class="btn btn-secondary active">Tous</button>
-                <button class="btn btn-secondary">Développement Web</button>
-                <button class="btn btn-secondary">Design UI/UX</button>
-                <button class="btn btn-secondary">Data & IA</button>
-                <button class="btn btn-secondary">DevOps & Cloud</button>
-            </section>
+        <section id="filters" class="mb-5 d-flex flex-wrap gap-2">
+            <button class="btn btn-outline-primary active">Tous</button>
+            <button class="btn btn-outline-primary">Développement Web</button>
+            <button class="btn btn-outline-primary">Design UI/UX</button>
+            <button class="btn btn-outline-primary">Data & IA</button>
+            <button class="btn btn-outline-primary">DevOps & Cloud</button>
+        </section>
 
-            <section id="freelancers-grid">
-                <div>
-                    
-                    <div class="col">
-                        <div class="card h-100">
-                            <img src="images/Mask group (18).png" alt="Fatou Kane">
-                            <div class="card-body">
-                                <h5 class="card-title">Fatou Kane</h5>
-                                <h6 class="text-muted">Développeuse Web Fullstack</h6>
-                                <p class="card-text">Expert React et Node.js avec 5 ans d'expérience dans les projets e-commerce.</p>
-                                <p><strong>Tarif :</strong> 250 € / jour</p>
-                                <p><strong>Note :</strong> 4.9/5 <i class="bi bi-star-fill text-warning"></i></p>
-                                <a href="#" class="btn btn-primary">Voir le profil</a>
-                            </div>
-                        </div>
-                    </div>
-                 
-                    <div class="col">
-                        <div class="card h-100">
-                            <img src="images/1766657791955.jpg" alt="Samuel Mensah">
-                            <div class="card-body">
-                                <h5 class="card-title">Samuel Mensah</h5>
-                                <h6 class="text-muted">Design UI/UX</h6>
-                                <p class="card-text">Passionnée par la création d'interfaces intuitives, modernes et centrées utilisateur.</p>
-                                <p><strong>Tarif :</strong> 300 € / jour</p>
-                                <p><strong>Note :</strong> 5.0/5 <i class="bi bi-star-fill text-warning"></i></p>
-                                <a href="#" class="btn btn-primary">Voir le profil</a>
-                            </div>
-                        </div>
-                    </div>
-                  
-                    <div class="col">
-                        <div class="card h-100">
-                            <img src="images/jeune-femme-souriante-parle-smartphone-travaille-ordinateur-portable-regarde-dans-pensee-distance-heureux-client-client-afro-americain-utilisant-telephone-portable-ordinateur.jpg"  alt="Sarah Diallo">
-                            <div class="card-body">
-                                <h5 class="card-title">Sarah Diallo</h5>
-                                <h6 class="text-muted">Data Scientist & IA</h6>
-                                <p class="card-text">Spécialiste du Machine Learning et de la modélisation de données complexes sous Python.</p>
-                                <p><strong>Tarif :</strong> 400 € / jour</p>
-                                <p><strong>Note :</strong> 4.8/5 <i class="bi bi-star-fill text-warning"></i></p>
-                                <a href="#" class="btn btn-primary">Voir le profil</a>
-                            </div>
-                        </div>
-                    </div>
-                   
-                    <div class="col">
-                        <div class="card h-100">
-                            <img src="images/photo-1573495783323-9e59a325d4b4.jpg" alt="Marie Ndiaye">
-                            <div class="card-body">
-                                <h5 class="card-title">Marie Ndiaye</h5>
-                                <h6 class="text-muted">Ingénieur DevOps & Cloud</h6>
-                                <p class="card-text">Automatisation d'infrastructures cloud AWS et GCP avec Docker et Kubernetes.</p>
-                                <p><strong>Tarif :</strong> 350 € / jour</p>
-                                <p><strong>Note :</strong> 4.7/5 <i class="bi bi-star-fill text-warning"></i></p>
-                                <a href="#" class="btn btn-primary">Voir le profil</a>
-                            </div>
-                        </div>
-                   
-                    <div class="col">
-                        <div class="card h-100">
-                            <img src="images/1759706930934.jpg"  alt="Ibrahim Diop">
-                            <div class="card-body">
-                                <h5 class="card-title">Ibrahim Diop</h5>
-                                <h6 class="text-muted">Développeur Web Mobile</h6>
-                                <p class="card-text">Création d'applications performantes avec Flutter pour iOS et Android.</p>
-                                <p><strong>Tarif :</strong> 280 € / jour</p>
-                                <p><strong>Note :</strong> 4.9/5 <i class="bi bi-star-fill text-warning"></i></p>
-                                <a href="#" class="btn btn-primary">Voir le profil</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col">
-                        <div class="card h-100">
-                            <img src="images/vue-laterale-femme-souriante-hijab-noir-buvant-du-cafe_651396-1751.avif" alt="Absa Gadiaga">
-                            <div class="card-body">
-                                <h5 class="card-title">Absa Gadiaga</h5>
-                                <h6 class="text-muted">Rédactrice Tech</h6>
-                                <p class="card-text">Création de documentations claires, d'articles de blog et de tutoriels techniques avancés.</p>
-                                <p><strong>Tarif :</strong> 180 € / jour</p>
-                                <p><strong>Note :</strong> 4.6/5 <i class="bi bi-star-fill text-warning"></i></p>
-                                <a href="#" class="btn btn-primary">Voir le profil</a>
-                            </div>
-                        </div>
-                    </div>
-                 
-                    <div class="col">
-                        <div class="card h-100">
-                            <img src="images/1706688431577.jpg" alt="Abdoulaye Barry">
-                            <div class="card-body">
-                                <h5 class="card-title">Abdoulaye Barry</h5>
-                                <h6 class="text-muted">Product Manager Tech</h6>
-                                <p class="card-text">Gestion de projets d'envergure suivant les méthodologies Scrum et Agile.</p>
-                                <p><strong>Tarif :</strong> 380 € / jour</p>
-                                <p><strong>Note :</strong> 5.0/5 <i class="bi bi-star-fill text-warning"></i></p>
-                                <a href="#" class="btn btn-primary">Voir le profil</a>
-                            </div>
-                        </div>
-                    </div>
-                   
-                    <div class="col">
-                        <div class="card h-100">
-                            <img src="images/b87fd05c-9969-45ee-b93f-f833a68869d9.png" alt="Amina Touré">
-                            <div class="card-body">
-                                <h5 class="card-title">Amina Touré</h5>
-                                <h6 class="text-muted">Expert Cybersécurité</h6>
-                                <p class="card-text">Audits de sécurité complets, tests d'intrusion et sécurisation des données d'entreprise.</p>
-                                <p><strong>Tarif :</strong> 450 € / jour</p>
-                                <p><strong>Note :</strong> 4.9/5 <i class="bi bi-star-fill text-warning"></i></p>
-                                <a href="#" class="btn btn-primary">Voir le profil</a>
-                            </div>
-                        </div>
-                    </div>
-                 
-                    <div class="col">
-                        <div class="card h-100">
-                            <img src="images/portrait-jeune-femme-musulmane-portant-hijab-regardant-camera_1157-49747.avif"  alt="Zainab Alao">
-                            <div class="card-body">
-                                <h5 class="card-title">Zainab Alao</h5>
-                                <h6 class="text-muted">Marketing Digital Tech</h6>
-                                <p class="card-text">Optimisation SEO, campagnes Ads ciblées pour la croissance de startups SaaS.</p>
-                                <p><strong>Tarif :</strong> 220 € / jour</p>
-                                <p><strong>Note :</strong> 4.8/5 <i class="bi bi-star-fill text-warning"></i></p>
-                                <a href="#" class="btn btn-primary">Voir le profil</a>
-                            </div>
+        <section id="freelancers-grid">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0">
+                        <img src="images/Mask group (18).png" class="card-img-top" alt="Fatou Kane">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Fatou Kane</h5>
+                            <h6 class="text-muted mb-3">Développeuse Web Fullstack</h6>
+                            <p class="card-text text-secondary flex-grow-1">Expert React et Node.js avec 5 ans d'expérience dans les projets e-commerce.</p>
+                            <hr class="text-muted">
+                            <p class="mb-1"><strong>Tarif :</strong> 250 € / jour</p>
+                            <p class="mb-3"><strong>Note :</strong> 4.9/5 <i class="bi bi-star-fill text-warning"></i></p>
+                            <a href="#" class="btn btn-primary w-100 mt-auto">Voir le profil</a>
                         </div>
                     </div>
                 </div>
-            </section>
-        </div>
-    </main>
+              
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0">
+                        <img src="images/1766657791955.jpg" class="card-img-top" alt="Samuel Mensah">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Samuel Mensah</h5>
+                            <h6 class="text-muted mb-3">Design UI/UX</h6>
+                            <p class="card-text text-secondary flex-grow-1">Passionnée par la création d'interfaces intuitives, modernes et centrées utilisateur.</p>
+                            <hr class="text-muted">
+                            <p class="mb-1"><strong>Tarif :</strong> 300 € / jour</p>
+                            <p class="mb-3"><strong>Note :</strong> 5.0/5 <i class="bi bi-star-fill text-warning"></i></p>
+                            <a href="#" class="btn btn-primary w-100 mt-auto">Voir le profil</a>
+                        </div>
+                    </div>
+                </div>
+              
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0">
+                        <img src="images/jeune-femme-souriante-parle-smartphone-travaille-ordinateur-portable-regarde-dans-pensee-distance-heureux-client-client-afro-americain-utilisant-telephone-portable-ordinateur.jpg" class="card-img-top" alt="Sarah Diallo">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Sarah Diallo</h5>
+                            <h6 class="text-muted mb-3">Data Scientist & IA</h6>
+                            <p class="card-text text-secondary flex-grow-1">Spécialiste du Machine Learning et de la modélisation de données complexes sous Python.</p>
+                            <hr class="text-muted">
+                            <p class="mb-1"><strong>Tarif :</strong> 400 € / jour</p>
+                            <p class="mb-3"><strong>Note :</strong> 4.8/5 <i class="bi bi-star-fill text-warning"></i></p>
+                            <a href="#" class="btn btn-primary w-100 mt-auto">Voir le profil</a>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0">
+                        <img src="images/photo-1573495783323-9e59a325d4b4.jpg" class="card-img-top" alt="Marie Ndiaye">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Marie Ndiaye</h5>
+                            <h6 class="text-muted mb-3">Ingénieur DevOps & Cloud</h6>
+                            <p class="card-text text-secondary flex-grow-1">Automatisation d'infrastructures cloud AWS et GCP avec Docker et Kubernetes.</p>
+                            <hr class="text-muted">
+                            <p class="mb-1"><strong>Tarif :</strong> 350 € / jour</p>
+                            <p class="mb-3"><strong>Note :</strong> 4.7/5 <i class="bi bi-star-fill text-warning"></i></p>
+                            <a href="#" class="btn btn-primary w-100 mt-auto">Voir le profil</a>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0">
+                        <img src="images/1759706930934.jpg" class="card-img-top" alt="Ibrahim Diop">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Ibrahim Diop</h5>
+                            <h6 class="text-muted mb-3">Développeur Web Mobile</h6>
+                            <p class="card-text text-secondary flex-grow-1">Création d'applications performantes avec Flutter pour iOS et Android.</p>
+                            <hr class="text-muted">
+                            <p class="mb-1"><strong>Tarif :</strong> 280 € / jour</p>
+                            <p class="mb-3"><strong>Note :</strong> 4.9/5 <i class="bi bi-star-fill text-warning"></i></p>
+                            <a href="#" class="btn btn-primary w-100 mt-auto">Voir le profil</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0">
+                        <img src="images/vue-laterale-femme-souriante-hijab-noir-buvant-du-cafe_651396-1751.avif" class="card-img-top" alt="Absa Gadiaga">
+                        <div class="card-body d-flex flex-column">
+                            <img src="" alt="">
+                            <h5 class="card-title fw-bold">Absa Gadiaga</h5>
+                            <h6 class="text-muted mb-3">Rédactrice Tech</h6>
+                            <p class="card-text text-secondary flex-grow-1">Création de documentations claires, d'articles de blog et de tutoriels techniques avancés.</p>
+                            <hr class="text-muted">
+                            <p class="mb-1"><strong>Tarif :</strong> 180 € / jour</p>
+                            <p class="mb-3"><strong>Note :</strong> 4.6/5 <i class="bi bi-star-fill text-warning"></i></p>
+                            <a href="#" class="btn btn-primary w-100 mt-auto">Voir le profil</a>
+                        </div>
+                    </div>
+                </div>
+             
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0">
+                        <img src="images/1706688431577.jpg" class="card-img-top" alt="Abdoulaye Barry">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Abdoulaye Barry</h5>
+                            <h6 class="text-muted mb-3">Product Manager Tech</h6>
+                            <p class="card-text text-secondary flex-grow-1">Gestion de projets d'envergure suivant les méthodologies Scrum et Agile.</p>
+                            <hr class="text-muted">
+                            <p class="mb-1"><strong>Tarif :</strong> 380 € / jour</p>
+                            <p class="mb-3"><strong>Note :</strong> 5.0/5 <i class="bi bi-star-fill text-warning"></i></p>
+                            <a href="#" class="btn btn-primary w-100 mt-auto">Voir le profil</a>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0">
+                        <img src="images/b87fd05c-9969-45ee-b93f-f833a68869d9.png" class="card-img-top" alt="Amina Touré">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Amina Touré</h5>
+                            <h6 class="text-muted mb-3">Expert Cybersécurité</h6>
+                            <p class="card-text text-secondary flex-grow-1">Audits de sécurité complets, tests d'intrusion et sécurisation des données d'entreprise.</p>
+                            <hr class="text-muted">
+                            <p class="mb-1"><strong>Tarif :</strong> 450 € / jour</p>
+                            <p class="mb-3"><strong>Note :</strong> 4.9/5 <i class="bi bi-star-fill text-warning"></i></p>
+                            <a href="#" class="btn btn-primary w-100 mt-auto">Voir le profil</a>
+                        </div>
+                    </div>
+                </div>
+             
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0">
+                        <img src="images/portrait-jeune-femme-musulmane-portant-hijab-regardant-camera_1157-49747.avif" class="card-img-top" alt="Zainab Alao">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">Zainab Alao</h5>
+                            <h6 class="text-muted mb-3">Marketing Digital Tech</h6>
+                            <p class="card-text text-secondary flex-grow-1">Optimisation SEO, campagnes Ads ciblées pour la croissance de startups SaaS.</p>
+                            <hr class="text-muted">
+                            <p class="mb-1"><strong>Tarif :</strong> 220 € / jour</p>
+                            <p class="mb-3"><strong>Note :</strong> 4.8/5 <i class="bi bi-star-fill text-warning"></i></p>
+                            <a href="#" class="btn btn-primary w-100 mt-auto">Voir le profil</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+</main>
 
 <footer class="bg-dark text-white pt-5 pb-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 mb-4">
-                    <h3>AfriTalent</h3>
-                    <p>La vitrine d'excellence pour les freelances de l'industrie technologique en Afrique.</p>
-                    <a class="navbar-brand" href="index.html"><img src="images/94127101-raster-carte-afrique-carte-isolé-sur-fond-blanc-continent-icône-indienne.jpg" alt="logo" width="50px">Afri<span id="moi">Talent</span> </a>
-                </div>
-
-                <div class="col-md-3 mb-4">
-                    <h4>Liens utiles</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="index.html" class="text-white text-decoration-none">Accueil</a></li>
-                        <li><a href="freelances.html" class="text-white text-decoration-none">Freelance</a></li>
-                        <li><a href="tarifs.html" class="text-white text-decoration-none">Tarifs</a></li>
-                    </ul>
-                </div>
-            
-                <div class="col-md-3 mb-4">
-                    <h4>Ressources</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white text-decoration-none">Blog</a></li>
-                        <li><a href="about.html" class="text-white text-decoration-none">A propos</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">FAQ</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-md-3 mb-4">
-                    <h4>Contact</h4>
-                    <p><i class="bi bi-geo-alt"></i> Dakar, Sénégal</p>
-                    <p><i class="bi bi-envelope"></i>contact@afritalent.com</p>
-                    <div class="fs-4 mt-2">
-                        <a href="#" class="text-white me-2"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" class="text-white me-2"><i class="bi bi-twitter-x"></i></a>
-                        <a href="#" class="text-white "><i class="bi bi-github"></i></a>
-                    </div>
-                </div>
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-12 col-md-3 mb-4">
+                <h3>AfriTalent</h3>
+                <p>La vitrine d'excellence pour les freelances de l'industrie technologique en Afrique.</p>
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/94127101-raster-carte-afrique-carte-isolé-sur-fond-blanc-continent-icône-indienne.jpg" alt="logo" width="50px"> Afri<span id="moi">Talent</span>
+                </a>
             </div>
 
-            <hr>
-            <div class="text-center">
-                <p>&copy;<span id="year">2026</span> AfriTalent. Tous droits réservés.</p>
+            <div class="col-12 col-md-3 mb-4">
+                <h4>Liens utiles</h4>
+                <ul class="list-unstyled">
+                    <li><a href="index.html" class="text-white text-decoration-none">Accueil</a></li>
+                    <li><a href="freelances.html" class="text-white text-decoration-none">Freelance</a></li>
+                    <li><a href="tarifs.html" class="text-white text-decoration-none">Tarifs</a></li>
+                </ul>
+            </div>
+        
+            <div class="col-12 col-md-3 mb-4">
+                <h4>Ressources</h4>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">Blog</a></li>
+                    <li><a href="about.html" class="text-white text-decoration-none">A propos</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div class="col-12 col-md-3 mb-4">
+                <h4>Contact</h4>
+                <p><i class="bi bi-geo-alt"></i> Dakar, Sénégal</p>
+                <p><i class="bi bi-envelope"></i> contact@afritalent.com</p>
+                <div class="fs-4 mt-2">
+                    <a href="#" class="text-white me-2" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    <a href="#" class="text-white me-2" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                    <a href="#" class="text-white" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                </div>
             </div>
         </div>
-    </footer>
 
+        <hr>
+        <div class="text-center">
+            <p>&copy; <span id="year">2026</span> AfriTalent. Tous droits réservés.</p>
+        </div>
+    </div>
+</footer>
 
+<button id="back-to-top" class="btn btn-primary position-fixed bottom-0 end-0 m-4 d-none" aria-label="Retourner en haut de la page">
+    <i class="bi bi-arrow-up-short"></i>
+</button>
 
-
-    <!-- Bootstrap 5 via CDN : script JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Votre script JavaScript -->
-    <script src="js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

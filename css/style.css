@@ -40,11 +40,11 @@ h1, h2, h3, h4, h5, h6{
 }
 
  #hero{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(../images/20190725-thefutureofworkafrica780.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(../images/e96669f09c136d4598a04830d9874ad5.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    min-height: 100vh;
+    min-height: 80vh;
     display: flex;
     align-items: center;
     padding: 60px 0;
@@ -118,7 +118,7 @@ h1, h2, h3, h4, h5, h6{
 }
 
 #stats .stat-box {
-    background:var(--secondary-color);
+    background:var(--bg-light);
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
@@ -137,7 +137,7 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .bento-card {
-    background: #ffffff;
+    background: var(--bg-light);
     border-radius: 16px; /* Bord arrondi style Bento Box */
     padding: 35px;
     border: 1px solid rgba(0, 0, 0, 0.05);
@@ -157,8 +157,9 @@ h1, h2, h3, h4, h5, h6{
     color: var(--accent-color);
 }
 
+
 .bento-icon {
-    font-size: 2rem;
+    font-size: 3rem;
     color: var(--primary-color);
 }
 
@@ -204,7 +205,7 @@ h1, h2, h3, h4, h5, h6{
 
 /* --- 4. CAROUSEL DES TÉMOIGNAGES --- */
 .bg-light-section {
-    background-color: #fcfdfe;
+    background-color: var(--bg-light);
 }
 
 .testimonial-img {
@@ -213,6 +214,7 @@ h1, h2, h3, h4, h5, h6{
     border-radius: 50%; /* Image ronde */
     object-fit: cover;
     border: 3px solid var(--primary-color);
+    background-color: var(--accent-color);
 }
 
 /* --- 5. BANDEAU D'APPEL À L'ACTION (CTA HOME) --- */
@@ -232,4 +234,145 @@ h1, h2, h3, h4, h5, h6{
 
 .btn-cta-light:hover {
     transform: scale(1.05);
+}
+
+
+.text-gradient {
+    background: linear-gradient(135deg, #ff6b6b, #ffbe0b) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important; /* Ajout d'une sécurité */
+    display: inline-block;
+}
+
+/* COMMIT 5 : RESPONSIVE DESIGN & MEDIA QUERIES*/
+
+/* --- Ajustements pour tablettes et mobiles (Écrans inférieurs à 992px) --- */
+@media (max-width: 991.98px) {
+    #hero {
+        text-align: center;
+        padding-top: 4rem !important;
+        padding-bottom: 4rem !important;
+    }
+    
+    /* Réduction de la taille du titre principal pour éviter qu'il ne prenne trop de place */
+    .text-gradient {
+        font-size: 2.2rem !important;
+    }
+}
+
+/* --- Ajustements spécifiques aux mobiles (Écrans inférieurs à 576px) --- */
+@media (max-width: 575.98px) {
+    .text-gradient {
+        font-size: 1.8rem !important;
+    }
+    
+    /* Espacement des boîtes de statistiques sur petit écran */
+    .stat-box {
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Ajustement du titre des sections */
+    .section-title {
+        font-size: 1.5rem !important;
+        margin-bottom: 2rem !important;
+    }
+}
+
+/* --- Design du bouton Retour en haut (masqué par défaut avec d-none) --- */
+#back-to-top {
+    z-index: 1030; /* S'assure de passer au-dessus du footer */
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+#back-to-top:hover {
+    transform: translateY(-5px);
+}
+
+#back-to-top i {
+    font-size: 1.8rem;
+    line-height: 0;
+}
+
+/* Force toutes les images de cartes à avoir la même hauteur et à se comporter comme un arrière-plan */
+.card-img-top {
+    height: 450px;       /* Ajuste cette hauteur (ex: 220px, 250px) selon tes préférences */
+    object-fit: cover;   /* Coupe l'image proprement sans la déformer pour remplir tout l'espace */
+    object-position: center; /* Centre le visage du freelance dans le cadre */
+}
+/* EFFETS HOVER COMBINÉS POUR LES CARTES FREELANCES (AUTORISÉ ET RECOMMANDÉ)*/
+
+/* 1. Configuration initiale de la carte */
+#freelancers-grid .card {
+    overflow: hidden; /* Empêche l'image de déborder pendant le zoom */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition douce pour la carte */
+}
+
+/* 2. Configuration initiale de l'image */
+#freelancers-grid .card .card-img-top {
+    height: 450px; /* Force la même hauteur pour toutes les images */
+    object-fit: cover; /* Recadre proprement sans déformer */
+    object-position: center; /* Centre les visages */
+    transition: transform 0.3s ease-in-out; /* Transition douce pour le zoom */
+}
+
+/* 3. Effet au survol (Hover) */
+#freelancers-grid .card:hover {
+    transform: translateY(-8px); /* La carte se soulève de 8px */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important; /* L'ombre devient plus visible */
+}
+
+#freelancers-grid .card:hover .card-img-top {
+    transform: scale(1.06); /* L'image à l'intérieur zoome de 6% */
+}
+
+/* Bordure colorée au survol uniquement pour l'équipe dirigeante */
+#team .card {
+    border: 2px solid transparent !important; /* Bordure invisible au départ */
+    transition: all 0.3s ease;
+}
+
+#team .card:hover {
+    border-color: #e87306 !important; /* Devient bleue (couleur primary Bootstrap) au survol */
+}
+
+
+/*BANNIÈRE D'ARRIÈRE-PLAN POUR LA PAGE CONTACT*/
+
+#contact-hero {
+    position: relative;
+    background-image: url('../images/support-contact-us-customer-hotline-260nw-2310238835.webp');
+    background-size: cover;       /* L'image couvre tout l'espace sans se déformer */
+    background-position: center;  /* Centre l'image horizontalement et verticalement */
+    background-repeat: no-repeat;
+    min-height: 250px;            /* Hauteur minimale de la bannière */
+    display: flex;
+    align-items: center;          /* Centre le texte verticalement */
+    overflow: hidden;
+}
+
+/* Superposition sombre (Overlay) pour rendre le texte blanc 100% lisible */
+#contact-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6); /* Ajuste le 0.6 (plus grand = plus sombre) */
+    z-index: 1;
+}
+
+/* Force le texte à se placer au-dessus de la couche sombre */
+#contact-hero .container {
+    position: relative;
+    z-index: 2;
 }

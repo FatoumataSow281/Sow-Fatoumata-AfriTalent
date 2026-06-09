@@ -376,3 +376,121 @@ h1, h2, h3, h4, h5, h6{
     position: relative;
     z-index: 2;
 }
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #212529;
+  --section-bg-light: #f8f9fa;
+  --navbar-bg: #212529; /* Fond initial sombre pour correspondre à votre design original */
+  --navbar-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Attribut appliqué par le JavaScript sur la balise <html> ou <body> */
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #f8f9fa;
+  --section-bg-light: #1e1e1e;
+  --navbar-bg: #0a0a0a;
+  --navbar-box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+}
+
+/* Application globale des variables */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  padding-top: 80px; /* Évite que la navbar "fixed-top" chevauche le Hero */
+}
+
+/* Redéfinition des sections avec les variables de thème */
+.bg-light-section {
+  background-color: var(--section-bg-light) !important;
+}
+
+.custom-navbar {
+  background-color: var(--navbar-bg) !important;
+  transition: padding 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  padding: 20px 0; /* Style de départ large */
+}
+
+/* Classe injectée par JavaScript lors du scroll */
+.custom-navbar.scrolled {
+  padding: 10px 0; /* Effet shrink (réduction de hauteur) */
+  box-shadow: var(--navbar-box-shadow);
+}
+
+/* Ajustement pour le bouton de retour en haut */
+#back-to-top {
+  z-index: 1030;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* ==========================================================================
+   AFRITALENT - DESIGN SYSTEM & THÈMES (COMMIT 6)
+   ========================================================================== */
+
+:root {
+    /* Variables de thèmes */
+    --bg-main: #ffffff;
+    --text-main: #212529;
+    --card-bg: #ffffff;
+    --card-text-muted: #6c757d;
+    --navbar-bg: #212529;
+    
+    /* Variables de marque et typographie (Pour atteindre le quota de 6+ variables) */
+    --primary-color: #0d6efd; /* Bleu Bootstrap ou ta couleur AfriTalent */
+    --main-font: 'Inter', sans-serif; /* Exemple de Google Fonts importée */
+}
+
+/* Attribut injecté par JavaScript sur la balise <html> */
+[data-theme="dark"] {
+    --bg-main: #121212;
+    --text-main: #e1e1e1;
+    --card-bg: #1e1e1e;
+    --card-text-muted: #a0a0a0;
+    --navbar-bg: #000000;
+    --primary-color: #375a7f; /* Teinte plus douce pour le mode sombre */
+}
+
+/* Applications globales */
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: var(--main-font);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Barre de navigation */
+.navbar {
+    background-color: var(--navbar-bg) !important;
+    transition: padding 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Classe ajoutée par JavaScript au défilement (Effet Shrink) */
+.navbar.scrolled {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Adaptations des composants Cards (Bento Grid et Listes) */
+.card {
+    background-color: var(--card-bg) !important;
+    color: var(--text-main) !important;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card .text-muted, 
+.card .text-secondary {
+    color: var(--card-text-muted) !important;
+}
+
+/* Bouton de retour en haut */
+#back-to-top {
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
+    z-index: 1050; /* S'assure de rester au-dessus du contenu */
+}
+
+#back-to-top:hover {
+    transform: scale(1.1); /* Petit effet dynamique au survol */
+}

@@ -426,71 +426,45 @@ body {
 }
 
 /* ==========================================================================
-   AFRITALENT - DESIGN SYSTEM & THÈMES (COMMIT 6)
+   6. ANIMATIONS DE FONDU DYNAMIQUES (UNIQUEMENT SUR INDEX ET ABOUT)
    ========================================================================== */
 
-:root {
-    /* Variables de thèmes */
-    --bg-main: #ffffff;
-    --text-main: #212529;
-    --card-bg: #ffffff;
-    --card-text-muted: #6c757d;
-    --navbar-bg: #212529;
-    
-    /* Variables de marque et typographie (Pour atteindre le quota de 6+ variables) */
-    --primary-color: #0d6efd; /* Bleu Bootstrap ou ta couleur AfriTalent */
-    --main-font: 'Inter', sans-serif; /* Exemple de Google Fonts importée */
+/* On cible l'identifiant ou une classe spécifique du body.
+   Si tes fichiers HTML n'ont pas d'ID sur le body, ajoute simplement :
+   - <body id="home-page"> dans ton index.html
+   - <body id="about-page"> dans ton about.html
+*/
+
+#home-page main section,
+#about-page main section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
 }
 
-/* Attribut injecté par JavaScript sur la balise <html> */
-[data-theme="dark"] {
-    --bg-main: #121212;
-    --text-main: #e1e1e1;
-    --card-bg: #1e1e1e;
-    --card-text-muted: #a0a0a0;
-    --navbar-bg: #000000;
-    --primary-color: #375a7f; /* Teinte plus douce pour le mode sombre */
+/* Classe d'apparition injectée par le script main.js au scroll */
+#home-page main section.is-visible,
+#about-page main section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-/* Applications globales */
-body {
-    background-color: var(--bg-main);
-    color: var(--text-main);
-    font-family: var(--main-font);
-    transition: background-color 0.3s ease, color 0.3s ease;
+
+/* --- ANIMATIONS DE FONDU (COMMIT 7) --- */
+
+/* 1. État initial masqué pour les sections de index.html et about.html */
+#hero, #how-it-works, #categories, #testimonials, #cta-home,
+#history, #team, #values, main section:has(#about-stats) {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-/* Barre de navigation */
-.navbar {
-    background-color: var(--navbar-bg) !important;
-    transition: padding 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Classe ajoutée par JavaScript au défilement (Effet Shrink) */
-.navbar.scrolled {
-    padding-top: 0.5rem !important;
-    padding-bottom: 0.5rem !important;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-/* Adaptations des composants Cards (Bento Grid et Listes) */
-.card {
-    background-color: var(--card-bg) !important;
-    color: var(--text-main) !important;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card .text-muted, 
-.card .text-secondary {
-    color: var(--card-text-muted) !important;
-}
-
-/* Bouton de retour en haut */
-#back-to-top {
-    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
-    z-index: 1050; /* S'assure de rester au-dessus du contenu */
-}
-
-#back-to-top:hover {
-    transform: scale(1.1); /* Petit effet dynamique au survol */
+/* 2. État d'apparition lorsque la classe is-visible est injectée par le JavaScript */
+#hero.is-visible, #how-it-works.is-visible, #categories.is-visible, 
+#testimonials.is-visible, #cta-home.is-visible, #history.is-visible, 
+#team.is-visible, #values.is-visible, main section:has(#about-stats).is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }

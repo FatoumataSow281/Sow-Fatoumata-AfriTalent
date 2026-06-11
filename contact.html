@@ -40,37 +40,37 @@
     </nav>
 </header>
 
-
 <main class="py-5">
     <div class="container">
         <section id="contact-hero" class="text-center text-white py-5 mb-5 rounded shadow-sm">
             <div class="container position-relative z-index-1">
-                <h1 class="display-4 fw-bold mb-3  text-gradient">Contactez-nous</h1>
+                <h1 class="display-4 fw-bold mb-3 text-gradient">Contactez-nous</h1>
                 <p class="lead mb-0">Une question, un projet ou une envie de rejoindre l'aventure ? Écrivez-nous !</p>
             </div>
         </section>
         
-        <!-- Changement ici : g-4 et colonnes adaptatives pour le responsive -->
         <div class="row g-5">
             <!-- FORMULAIRE DE CONTACT -->
             <section class="col-12 col-md-6" id="contact-form-section">
                 <div class="bg-light p-4 rounded shadow-sm">
                     <h2 class="h4 mb-4">Envoyez-nous un message</h2>
-                    <form id="contactForm" novalidate>
+                    
+                    <!-- ID rectifié pour correspondre à main.js (contact-form) -->
+                    <form id="contact-form" novalidate>
                         <div class="mb-3">
                             <label for="nom" class="form-label">Nom</label>
                             <input type="text" class="form-control" id="nom" required>
-                            <div class="error-feedback text-danger small mt-1"></div>
+                            <div class="invalid-feedback">Le nom est obligatoire.</div>
                         </div>
                         <div class="mb-3">
                             <label for="prenom" class="form-label">Prénom</label>
                             <input type="text" class="form-control" id="prenom" required>
-                            <div class="error-feedback text-danger small mt-1"></div>
+                            <div class="invalid-feedback">Le prénom est obligatoire.</div>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" required>
-                            <div class="error-feedback text-danger small mt-1"></div>
+                            <div class="invalid-feedback">L'adresse email est obligatoire ou incorrecte.</div>
                         </div>
                         <div class="mb-3">
                             <label for="sujet" class="form-label">Sujet</label>
@@ -80,17 +80,18 @@
                                 <option value="support">Support technique</option>
                                 <option value="partenariat">Partenariat commercial</option>
                             </select>
-                            <div class="error-feedback text-danger small mt-1"></div>
+                            <div class="invalid-feedback">Veuillez choisir un sujet dans la liste.</div>
                         </div>
                         <div class="mb-3">
                             <label for="message" class="form-label">Message (Minimum 20 caractères)</label>
                             <textarea class="form-control" id="message" rows="5" required></textarea>
-                            <div class="error-feedback text-danger small mt-1"></div>
+                            <div class="invalid-feedback">Le message doit faire au moins 20 caractères.</div>
                         </div>
                         <button type="submit" class="btn btn-primary w-100 w-sm-auto">Envoyer le message</button>
                     </form>
-                    <!-- Zone d'affichage du message de succès ultérieur -->
-                    <div id="formSuccess" class="mt-3"></div>
+                    
+                    <!-- ID rectifié pour correspondre à main.js (form-success-message) -->
+                    <div id="form-success-message" class="mt-3"></div>
                 </div>
             </section>
 

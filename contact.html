@@ -1,187 +1,240 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <!-- Métadonnées indispensables pour l'encodage des caractères et le rendu adaptatif mobile -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AfriTalent — Contact</title>
-    <!-- Bootstrap 5 via CDN : feuille de style -->
+    
+    <!-- CHARGEMENT DES FEUILLES DE STYLE EXTERNES -->
+    <!-- Bootstrap 5 CSS via CDN : Framework de composants, formulaires et grille -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Votre feuille de style personnelle -->
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Style personnalisé : Contient nos variables globales et styles spécifiques (ex: .text-gradient) -->
+    <link rel="stylesheet" href="css/style.css?v=1.1">
+    <!-- Bootstrap Icons : Utilisé pour les repères visuels des coordonnées (téléphone, enveloppe, etc.) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 </head>
 <body>
 
-<header>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="images/94127101-raster-carte-afrique-carte-isolé-sur-fond-blanc-continent-icône-indienne.jpg" alt="logo officiel de AfriTalent" width="50px"> Afri<span id="moi">Talent</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navMenu">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="freelances.html">Freelances</a></li>
-                    <li class="nav-item"><a class="nav-link" href="tarifs.html">Tarifs</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">A propos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
-                </ul>
-                <a href="contact.html" class="btn btn-primary ms-lg-3 mt-3 mt-lg-0 d-block d-lg-inline-block">Rejoindre AfriTalent</a>
-                <!-- Bouton Toggle avec ID sur l'icône -->
-                <button id="theme-toggle" class="btn btn-outline-light ms-lg-2 mt-2 mt-lg-0" aria-label="changer de thème">
-                    <i class="bi bi-moon-fill" id="theme-icon"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
-</header>
-
-<main class="py-5">
-    <div class="container">
-        <section id="contact-hero" class="text-center text-white py-5 mb-5 rounded shadow-sm">
-            <div class="container position-relative z-index-1">
-                <h1 class="display-4 fw-bold mb-3 text-gradient">Contactez-nous</h1>
-                <p class="lead mb-0">Une question, un projet ou une envie de rejoindre l'aventure ? Écrivez-nous !</p>
-            </div>
-        </section>
-        
-        <div class="row g-5">
-            <!-- FORMULAIRE DE CONTACT -->
-            <section class="col-12 col-md-6" id="contact-form-section">
-                <div class="bg-light p-4 rounded shadow-sm">
-                    <h2 class="h4 mb-4">Envoyez-nous un message</h2>
-                    
-                    <!-- ID rectifié pour correspondre à main.js (contact-form) -->
-                    <form id="contact-form" novalidate>
-                        <div class="mb-3">
-                            <label for="nom" class="form-label">Nom</label>
-                            <input type="text" class="form-control" id="nom" required>
-                            <div class="invalid-feedback">Le nom est obligatoire.</div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="prenom" class="form-label">Prénom</label>
-                            <input type="text" class="form-control" id="prenom" required>
-                            <div class="invalid-feedback">Le prénom est obligatoire.</div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" required>
-                            <div class="invalid-feedback">L'adresse email est obligatoire ou incorrecte.</div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="sujet" class="form-label">Sujet</label>
-                            <select class="form-select" id="sujet" required>
-                                <option value="" selected disabled>Choisir une option...</option>
-                                <option value="recrutement">Recrutement de freelances</option>
-                                <option value="support">Support technique</option>
-                                <option value="partenariat">Partenariat commercial</option>
-                            </select>
-                            <div class="invalid-feedback">Veuillez choisir un sujet dans la liste.</div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Message (Minimum 20 caractères)</label>
-                            <textarea class="form-control" id="message" rows="5" required></textarea>
-                            <div class="invalid-feedback">Le message doit faire au moins 20 caractères.</div>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100 w-sm-auto">Envoyer le message</button>
-                    </form>
-                    
-                    <!-- ID rectifié pour correspondre à main.js (form-success-message) -->
-                    <div id="form-success-message" class="mt-3"></div>
-                </div>
-            </section>
-
-            <!-- INFORMATIONS DE CONTACT & MAPS -->
-            <section class="col-12 col-md-6" id="contact-infos">
-                <div class="h-100 d-flex flex-column justify-content-between">
-                    <div>
-                        <h2 class="h4 mb-4">Nos coordonnées</h2>
-                        <ul class="list-unstyled">
-                            <li class="mb-3 d-flex align-items-start">
-                                <i class="bi bi-geo-alt text-primary fs-5 me-3"></i>
-                                <span>102 Avenue de l'Innovation, Dakar Tech City, Sénégal</span>
-                            </li>
-                            <li class="mb-3 d-flex align-items-center">
-                                <i class="bi bi-telephone text-primary fs-5 me-3"></i>
-                                <span>+221 33 800 00 00</span>
-                            </li>
-                            <li class="mb-3 d-flex align-items-center">
-                                <i class="bi bi-envelope text-primary fs-5 me-3"></i>
-                                <span>support@afritalent.tech</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Carte Google Maps intégrée (iframe) fluide -->
-                    <div class="map-container mt-4 flex-grow-1">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3858.9197127926715!2d-17.447547!3d14.717144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTTCsDQzJzAxLjciTiAxN8KwMjYnNTEuMiJX!5e0!3m2!1sfr!2ssn!4v1710000000000!5m2!1sfr!2ssn" width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy" class="rounded shadow-sm"></iframe>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
-</main>
-
-<footer class="bg-dark text-white pt-5 pb-3">
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-12 col-md-3 mb-4">
-                <h3>AfriTalent</h3>
-                <p>La vitrine d'excellence pour les freelances de l'industrie technologique en Afrique.</p>
+    <!-- ==========================================================================
+         EN-TÊTE ET ENTRÉE DE NAVIGATION (Fixée en haut d'écran lors du défilement)
+         ========================================================================== -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+            <div class="container">
+                <!-- Zone de marque : Logo + Nom du site -->
                 <a class="navbar-brand" href="index.html">
-                    <img src="images/94127101-raster-carte-afrique-carte-isolé-sur-fond-blanc-continent-icône-indienne.jpg" alt="logo" width="50px"> Afri<span id="moi">Talent</span>
+                    <img src="images/94127101-raster-carte-afrique-carte-isolé-sur-fond-blanc-continent-icône-indienne.jpg" alt="logo officiel de AfriTalent" width="50"> Afri<span class="moi">Talent</span>
                 </a>
-            </div>
-
-            <div class="col-12 col-md-3 mb-4">
-                <h4>Liens utiles</h4>
-                <ul class="list-unstyled">
-                    <li><a href="index.html" class="text-white text-decoration-none">Accueil</a></li>
-                    <li><a href="freelances.html" class="text-white text-decoration-none">Freelance</a></li>
-                    <li><a href="tarifs.html" class="text-white text-decoration-none">Tarifs</a></li>
-                </ul>
-            </div>
-        
-            <div class="col-12 col-md-3 mb-4">
-                <h4>Ressources</h4>
-                <ul class="list-unstyled">
-                    <li><a href="#" class="text-white text-decoration-none">Blog</a></li>
-                    <li><a href="about.html" class="text-white text-decoration-none">A propos</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">FAQ</a></li>
-                </ul>
-            </div>
-
-            <div class="col-12 col-md-3 mb-4">
-                <h4>Contact</h4>
-                <p><i class="bi bi-geo-alt"></i> Dakar, Sénégal</p>
-                <p><i class="bi bi-envelope"></i> contact@afritalent.com</p>
-                <div class="fs-4 mt-2">
-                    <a href="#" class="text-white me-2" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                    <a href="#" class="text-white me-2" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-                    <a href="#" class="text-white" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                
+                <!-- Bouton Hamburger : Apparaît sur mobile et gère le déploiement du menu -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <!-- Menu de navigation principal -->
+                <div class="collapse navbar-collapse" id="navMenu">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="freelances.html">Freelances</a></li>
+                        <li class="nav-item"><a class="nav-link" href="tarifs.html">Tarifs</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">A propos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+                        <!-- La classe 'active' signale visuellement et techniquement la page en cours -->
+                        <li class="nav-item"><a class="nav-link active" href="contact.html" aria-current="page">Contact</a></li>
+                    </ul>
+                    
+                    <!-- Bouton d'action principal d'inscription -->
+                    <a href="contact.html" class="btn btn-primary ms-lg-3 mt-3 mt-lg-0 d-block d-lg-inline-block">Rejoindre AfriTalent</a>
+                    
+                    <!-- Commutateur du Mode Sombre / Mode Clair (Géré par js/main.js) -->
+                    <button id="theme-toggle" class="btn btn-outline-light ms-lg-2 mt-2 mt-lg-0" aria-label="changer de thème">
+                        <i class="bi bi-moon-fill" id="theme-icon"></i>
+                    </button>
                 </div>
             </div>
+        </nav>
+    </header>
+
+    <!-- ==========================================================================
+         CONTENU PRINCIPAL DE LA PAGE (py-5 ajoute des marges verticales de sécurité)
+         ========================================================================== -->
+    <main class="py-5">
+        <div class="container pt-4">
+            
+            <!-- EN-TÊTE HERO DE LA PAGE CONTACT -->
+            <section id="contact-hero" class="text-center text-white py-5 mb-5 rounded shadow-sm">
+                <!-- .position-relative et z-index-1 assurent que le texte reste lisible au-dessus d'un éventuel background coloré -->
+                <div class="container position-relative z-index-1">
+                    <h1 class="display-4 fw-bold mb-3 text-gradient">Contactez-nous</h1>
+                    <p class="lead mb-0">Une question, un projet ou une envie de rejoindre l'aventure ? Écrivez-nous !</p>
+                </div>
+            </section>
+            
+            <!-- BLOC TECHNIQUE DIAL : FORMULAIRE VS COORDONNÉES (g-5 espace largement les deux colonnes) -->
+            <div class="row g-5">
+                
+                <!-- SECTION FORMULAIRE DE CONTACT (Prend 6 colonnes sur 12 à partir de l'affichage médium) -->
+                <section class="col-12 col-md-6" id="contact-form-section">
+                    <div class="bg-light p-4 rounded shadow-sm">
+                        <h2 class="h4 mb-4">Envoyez-nous un message</h2>
+                        
+                        <!-- L'attribut 'novalidate' désactive la bulle d'erreur par défaut des navigateurs pour laisser place au style Bootstrap -->
+                        <form id="contact-form" novalidate>
+                            
+                            <!-- Champ : Nom -->
+                            <div class="mb-3">
+                                <label for="nom" class="form-label">Nom</label>
+                                <input type="text" class="form-control" id="nom" required>
+                                <!-- .invalid-feedback s'affiche automatiquement en rouge si le formulaire est soumis à vide -->
+                                <div class="invalid-feedback">Le nom est obligatoire.</div>
+                            </div>
+                            
+                            <!-- Champ : Prénom -->
+                            <div class="mb-3">
+                                <label for="prenom" class="form-label">Prénom</label>
+                                <input type="text" class="form-control" id="prenom" required>
+                                <div class="invalid-feedback">Le prénom est obligatoire.</div>
+                            </div>
+                            
+                            <!-- Champ : Email (Le type "email" applique une vérification native de la syntaxe "@") -->
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                                <div class="invalid-feedback">L'adresse email est obligatoire ou incorrecte.</div>
+                            </div>
+                            
+                            <!-- Champ : Liste déroulante Sujet -->
+                            <div class="mb-3">
+                                <label for="sujet" class="form-label">Sujet</label>
+                                <select class="form-select" id="sujet" required>
+                                    <!-- L'option par défaut est désactivée (disabled) pour forcer un choix utilisateur -->
+                                    <option value="" selected disabled>Choisir une option...</option>
+                                    <option value="recrutement">Recrutement de freelances</option>
+                                    <option value="support">Support technique</option>
+                                    <option value="partenariat">Partenariat commercial</option>
+                                </select>
+                                <div class="invalid-feedback">Veuillez choisir un sujet dans la liste.</div>
+                            </div>
+                            
+                            <!-- Champ : Message -->
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message (Minimum 20 caractères)</label>
+                                <!-- Les lignes (rows) définissent la hauteur de départ de la zone de saisie -->
+                                <textarea class="form-control" id="message" rows="5" required></textarea>
+                                <div class="invalid-feedback">Le message doit faire au moins 20 caractères.</div>
+                            </div>
+                            
+                            <!-- Bouton d'envoi (.w-100 occupe toute la largeur sur mobile, w-sm-auto redevient compact sur PC) -->
+                            <button type="submit" class="btn btn-primary w-100 w-sm-auto">Envoyer le message</button>
+                        </form>
+                        
+                        <!-- Zone conteneur ciblé par main.js pour insérer dynamiquement le message de succès d'envoi -->
+                        <div id="form-success-message" class="mt-3"></div>
+                    </div>
+                </section>
+
+                <!-- SECTION ADRESSE & CARTOGRAPHIE GOOGLE MAPS -->
+                <section class="col-12 col-md-6" id="contact-infos">
+                    <!-- h-100 et d-flex alignent parfaitement la hauteur de ce bloc sur celle du formulaire à côté -->
+                    <div class="h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <h2 class="h4 mb-4">Nos coordonnées</h2>
+                            <ul class="list-unstyled">
+                                <!-- align-items-start évite que l'icône se centre verticalement si l'adresse fait plusieurs lignes -->
+                                <li class="mb-3 d-flex align-items-start">
+                                    <i class="bi bi-geo-alt text-primary fs-5 me-3" aria-hidden="true"></i>
+                                    <span>102 Avenue de l'Innovation, Dakar Tech City, Sénégal</span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-center">
+                                    <i class="bi bi-telephone text-primary fs-5 me-3" aria-hidden="true"></i>
+                                    <span>+221 33 800 00 00</span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-center">
+                                    <i class="bi bi-envelope text-primary fs-5 me-3" aria-hidden="true"></i>
+                                    <span>support@afritalent.tech</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Bloc Carte Intégrée (iframe) Google Maps en mode fluide (.flex-grow-1 remplit l'espace restant) -->
+                        <div class="map-container mt-4 flex-grow-1">
+                            <!-- loading="lazy" optimise les performances en chargeant la carte uniquement quand elle apparaît à l'écran -->
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3858.9197127926715!2d-17.447547!3d14.717144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTTCsDQzJzAxLjciTiAxN8KwMjYnNTEuMiJX!5e0!3m2!1sfr!2ssn!4v1710000000000!5m2!1sfr!2ssn" height="320" style="border:0; width: 100%;" allowfullscreen="" loading="lazy" class="rounded shadow-sm" title="Localisation des bureaux de AfriTalent à Dakar"></iframe>
+                        </div>
+                    </div>
+                </section>
+                
+            </div>
         </div>
+    </main>
 
-        <hr>
-        <div class="text-center">
-            <p>&copy; <span id="year">2026</span> AfriTalent. Tous droits réservés.</p>
+    <!-- ==========================================================================
+         PIED DE PAGE (FOOTER TERMINAL)
+         ========================================================================== -->
+    <footer class="bg-dark text-white pt-5 pb-3">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Colonne Identité corporative -->
+                <div class="col-12 col-md-3 mb-4">
+                    <h3>AfriTalent</h3>
+                    <p>La vitrine d'excellence pour les freelances de l'industrie technologique en Afrique.</p>
+                    <a class="navbar-brand" href="index.html">
+                        <img src="images/94127101-raster-carte-afrique-carte-isolé-sur-fond-blanc-continent-icône-indienne.jpg" alt="logo officiel de AfriTalent" width="50"> Afri<span class="moi">Talent</span>
+                    </a>
+                </div>
+
+                <!-- Colonne Navigation rapide -->
+                <div class="col-12 col-md-3 mb-4">
+                    <h4>Liens utiles</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white text-decoration-none">Accueil</a></li>
+                        <li><a href="freelances.html" class="text-white text-decoration-none">Freelance</a></li>
+                        <li><a href="tarifs.html" class="text-white text-decoration-none">Tarifs</a></li>
+                    </ul>
+                </div>
+            
+                <!-- Colonne Liens Annexes / Documentation -->
+                <div class="col-12 col-md-3 mb-4">
+                    <h4>Ressources</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">Blog</a></li>
+                        <li><a href="about.html" class="text-white text-decoration-none">A propos</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne Informations géographiques & Liens réseaux sociaux -->
+                <div class="col-12 col-md-3 mb-4">
+                    <h4>Contact</h4>
+                    <p><i class="bi bi-geo-alt"></i> Dakar, Sénégal</p>
+                    <p><i class="bi bi-envelope"></i> contact@afritalent.com</p>
+                    <div class="fs-4 mt-2">
+                        <a href="#" class="text-white me-2" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="text-white me-2" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="text-white" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+            <!-- Ligne de Copyright (Année mise à jour via main.js) -->
+            <div class="text-center">
+                <p>&copy; <span id="year">2026</span> AfriTalent. Tous droits réservés.</p>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
-<!-- Bouton de retour en haut (Back to Top) pour le fichier main.js -->
-<button id="back-to-top" class="btn btn-primary position-fixed bottom-0 end-0 m-4 d-none" aria-label="Retourner en haut de la page">
-    <i class="bi bi-arrow-up-short"></i>
-</button>
+    <!-- BOUTON FLOTTANT : RETOUR RAPIDE EN HAUT DE PAGE -->
+    <!-- d-none masque le bouton par défaut, main.js supprime cette classe lors du défilement (scroll) -->
+    <button id="back-to-top" class="btn btn-primary position-fixed bottom-0 end-0 m-4 d-none" aria-label="Retourner en haut de la page">
+        <i class="bi bi-arrow-up-short"></i>
+    </button>
 
-<!-- Bootstrap 5 via CDN : script JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Votre script JavaScript -->
-<script src="js/main.js"></script>
+    <!-- LOGIQUES DE SCRIPTS JAVASCRIPT EXTEBLES ET LOGICEL INTERNE -->
+    <!-- Bootstrap Bundle : Essentiel pour le bon repliement responsif du menu de navigation haut -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- main.js : Gère l'interception et le contrôle JS personnalisé de la soumission du formulaire, le dark mode et le bouton "back to top" -->
+    <script src="js/main.js"></script>
 </body>
 </html>

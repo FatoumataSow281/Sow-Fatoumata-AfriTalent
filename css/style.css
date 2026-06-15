@@ -1,46 +1,182 @@
-/*1. VARIABLES & CONFIGURATION GLOBALE (:root)*/
-@import url('https://fonts.googleapis.com/css2?family=...&display=swap');
+/* ==========================================================================
+   1. VARIABLES & CONFIGURATION GLOBALE (:root)
+   ========================================================================== */
+/* Importation des polices Google Fonts : 
+   - Plus Jakarta Sans pour une identité visuelle forte sur les titres
+   - Inter pour une lisibilité maximale sur les textes de corps de page */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700&family=Inter:wght=400;500;600&display=swap');
 
-:root{
-    /* Palette de couleurs (Max 5 couleurs selon le sujet) */
-    --primary-color: #112233;   /* Bleu nuit pour la navbar et les titres */
-    --secondary-color: #1a365d;
-    --accent-color: #ff9f43;    /* Couleur vive pour le survol et les détails importants */
-    --bg-light: #f7fafc;        
-    --text-dark: #2d3748;   /* Texte standard */
-    --main-radius: 12px;
-
-    /* Typographies (Min 2 polices) */
-    /* Votre typographie (Assurez-vous d'avoir mis l'import Google Fonts en haut) */
-    --font-title: 'Plus Jakarta Sans', sans-serif;
-    --font-body: 'NomPoliceCorps', sans-serif;
-
-    /* Espacements & Rayons */
+:root {
+    /* Design Tokens : Palette de couleurs de la marque et mesures structurelles */
+    --primary-color: #112233;   /* Bleu nuit principal (Identité AfriTalent) */
+    --secondary-color: #1a365d; /* Bleu secondaire pour les variantes d'états */
+    --accent-color: #ff9f43;    /* Orange vif pour les appels à l'action et survols */
+    --main-radius: 12px;        /* Arrondi standard des composants (cartes, boîtes) */
+    --border-radius-bento: 16px;/* Arrondi distinctif pour les blocs de la Bento Grid */
     --main-padding: 2rem;
-    --border-radius-bento: 16px;
-    
 
+    /* Typographies sémantiques */
+    --font-title: 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Variables dynamiques de Thème : Mode Clair par défaut */
+    --bg-color: #ffffff;
+    --text-color: #2d3748;
+    --bg-light: #f7fafc;
+    --section-bg-light: #f8f9fa;
+    --navbar-bg: #112233;
+    --navbar-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --card-border: rgba(0, 0, 0, 0.05);
 }
 
-/*2. RESET & STYLES DE BASE*/
-*, ::after ::before{
+/* Surcharge complète pour le Mode Sombre.
+   Déclenché par l'attribut personnalisé [data-theme="dark"] injecté sur la balise <html> via JavaScript.
+*/
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: #f8f9fa;       /* Blanc cassé réduisant la fatigue visuelle */
+    --bg-light: #1e1e1e;         /* Les conteneurs clairs passent sur un gris sombre de niveau 1 */
+    --section-bg-light: #1a1a1a;
+    --navbar-bg: #0a0a0a;
+    --navbar-box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+    --card-border: rgba(255, 255, 255, 0.08);
+}
+
+/* ==========================================================================
+   2. RESET & STYLES DE BASE & CORRECTIFS MODE SOMBRE
+   ========================================================================== */
+/* box-sizing: border-box assure que le padding et les bordures sont inclus 
+   dans la largeur/hauteur totale des éléments pour éviter les cassures de layout */
+*, ::after, ::before { 
     box-sizing: border-box;
 }
 
-body{
+body {
     margin: 0;
     padding: 0;
+    padding-top: 80px; /* Compensation indispensable pour éviter que le contenu ne glisse sous la Navbar fixe */
     font-family: var(--font-body);
-    color: var(--text-dark);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    /* Transition fluide lors du basculement Clair / Sombre */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-h1, h2, h3, h4, h5, h6{
+h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-title);
-
+    color: inherit;
 }
 
- #hero{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(../images/e96669f09c136d4598a04830d9874ad5.jpg);
+/* --- Sécurités d'affichage globales pour le Mode Sombre --- 
+   Ces règles forcent les composants à hériter des bonnes variables de texte et de fond, 
+   neutralisant les styles inline ou les classes Bootstrap trop rigides. */
+
+[data-theme="dark"] body {
+    color: var(--text-color) !important;
+}
+
+/* Blanchiment automatique de l'ensemble des textes natifs en mode sombre */
+[data-theme="dark"] h1, 
+[data-theme="dark"] h2, 
+[data-theme="dark"] h3, 
+[data-theme="dark"] h4, 
+[data-theme="dark"] h5, 
+[data-theme="dark"] h6, 
+[data-theme="dark"] p,
+[data-theme="dark"] span,
+[data-theme="dark"] label,
+[data-theme="dark"] li,
+[data-theme="dark"] .card-title,
+[data-theme="dark"] .card-text {
+    color: var(--text-color) !important;
+}
+
+/* Neutralisation de la classe utilitaire .bg-light de Bootstrap */
+[data-theme="dark"] .bg-light {
+    background-color: var(--bg-light) !important;
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .text-dark {
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .text-muted {
+    color: #a0aec0 !important; /* Gris plus clair et contrasté pour l'accessibilité RGAA */
+}
+
+/* Inversion automatique des cartes standards Bootstrap (.card) */
+[data-theme="dark"] .card {
+    background-color: var(--bg-light) !important;
+    border-color: var(--card-border) !important;
+    color: var(--text-color) !important;
+}
+
+/* Adaptation des entrées de formulaire (contact.html) pour le thème sombre */
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select {
+    background-color: #2b2b2b !important;
+    border-color: #444444 !important;
+    color: #ffffff !important;
+}
+
+/* Focus des champs en mode sombre : amélioration du feedback visuel */
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus {
+    border-color: var(--accent-color) !important;
+    box-shadow: 0 0 0 0.25rem rgba(255, 159, 67, 0.25) !important;
+}
+
+[data-theme="dark"] .form-control::placeholder {
+    color: #aaaaaa !important;
+}
+
+/* ==========================================================================
+   3. CONFIGURATION DES EN-TÊTES & BANNIÈRES (NAVBAR, HERO, CONTACT)
+   ========================================================================== */
+.custom-navbar {
+    background-color: var(--navbar-bg) !important;
+    box-shadow: var(--navbar-box-shadow);
+    /* Transition fluide pour l'effet de rétractation (Shrink) au défilement */
+    transition: padding 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    padding: 15px 0;
+}
+
+/* Classe injectée par JavaScript lorsque l'utilisateur descend dans la page */
+.custom-navbar.scrolled {
+    padding: 10px 0; 
+}
+
+.navbar-brand img {
+    border-radius: 50%;
+    object-fit: cover; /* Empêche la déformation de l'image du logo */
+}
+
+/* Classe spécifique pour l'accentuation textuelle de l'identité de marque (ex: Talent) */
+.moi {
+    color: #57a4df; 
+}
+
+.navbar-nav .nav-link {
+    font-family: var(--font-title);
+    font-weight: 500;
+    padding: 0 15px !important;
+    transition: color 0.3s ease;
+}
+
+/* Fusion des états de survol (hover) et de page active (active) */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--accent-color) !important;
+}
+
+.navbar-nav .nav-link.active {
+    font-weight: 600;
+}
+
+/* Section Hero Principale (index.html) avec superposition d'un dégradé protecteur */
+#hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../images/e96669f09c136d4598a04830d9874ad5.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -48,49 +184,48 @@ h1, h2, h3, h4, h5, h6{
     display: flex;
     align-items: center;
     padding: 60px 0;
- }
-/* 1. Personnalisation du fond de la navbar */
-.navbar.bg-dark {
-    background-color: var(--primary-color) !important; /* Force l'utilisation de votre couleur primaire */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);       /* Ajoute une ombre légère sous la navbar */
-    padding: 15px 0;                                 /* Donne un peu d'espace en haut et en bas */
-}
-/* Rendre le logo (l'image de la carte d'Afrique) bien proportionné */
-.navbar-brand img {
-    border-radius: 50px; /* Rend l'icône de fond blanche légèrement arrondie si besoin */
-    object-fit: cover;
-
-}
-#moi{
-    color: #57a4dfdf;
 }
 
-/* 3. Alignement et styles des liens de navigation */
-.navbar-nav .nav-link {
-    font-family: var(--font-title);
-    font-weight: 500;
-    padding: 0 15px !important; /* Espacement horizontal entre les 6 liens */
-    transition: color 0.3s ease; /* Transition douce pour l'effet de survol */
+/* Bannière d'en-tête de la page Contact (contact.html) */
+#contact-hero {
+    position: relative;
+    background-image: url('../images/support-contact-us-customer-hotline-260nw-2310238835.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
 }
 
-/* Effet au survol (hover) sur les liens de navigation */
-.navbar-nav .nav-link:hover {
-    color: var(--accent-color) !important; /* Le lien change de couleur au passage de la souris */
+/* Pseudo-élément générant un voile sombre pour garantir la lisibilité du titre blanc */
+#contact-hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
 }
 
-/* Style du lien actif (la page où l'on se trouve) */
-.navbar-nav .nav-link.active {
-    color: var(--accent-color) !important;
-    font-weight: 600;
+#contact-hero .container {
+    position: relative;
+    z-index: 2; /* Repasse le texte au-dessus du voile sombre */
 }
-.section-title{
+
+.section-title {
     position: relative;
     padding-bottom: 15px;
     font-weight: 700;
 }
 
+.bg-light-section {
+    background-color: var(--section-bg-light) !important;
+}
 
-
+/* ==========================================================================
+   4. COMPOSANTS SÉMANTIQUES (BOUTONS, COMPTEURS, BENTO, CARDS)
+   ========================================================================== */
 .btn-hero-primary {
     background-color: var(--primary-color);
     color: #ffffff !important;
@@ -117,31 +252,41 @@ h1, h2, h3, h4, h5, h6{
     color: #ffffff !important;
 }
 
-#stats .stat-box {
-    background:var(--bg-light);
-    border-radius: 12px;
+/* Boîtes de statistiques d'impact (index.html et about.html) */
+.stat-box {
+    background: var(--bg-light);
+    border-radius: var(--main-radius);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
 }
 
-#stats .num {
+.num {
     font-size: 2.5rem;
     color: var(--primary-color);
     display: block;
 }
 
-/* --- 2. STRUCTURATION BENTO GRID (CSS Grid) --- */
+/* Coloration orange spécifique pour faire ressortir les compteurs en mode sombre */
+[data-theme="dark"] .num {
+    color: var(--accent-color) !important; 
+}
+
+/* Structure CSS Grid dédiée à la Bento Grid (Architecture moderne de la page d'accueil)
+   Définit un découpage strict à 3 colonnes de largeurs égales (1fr).
+*/
 .bento-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 colonnes égales sur Desktop */
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
 }
 
 .bento-card {
     background: var(--bg-light);
-    border-radius: 16px; /* Bord arrondi style Bento Box */
+    border-radius: var(--border-radius-bento);
     padding: 35px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--card-border);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.02);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .bento-header {
@@ -157,26 +302,29 @@ h1, h2, h3, h4, h5, h6{
     color: var(--accent-color);
 }
 
-
 .bento-icon {
     font-size: 3rem;
     color: var(--primary-color);
 }
 
-/* Classes asymétriques Bento */
-.bento-w-2 {
-    grid-column: span 2; /* S'étend sur 2 colonnes pour casser la symétrie */
+[data-theme="dark"] .bento-icon {
+    color: var(--accent-color);
 }
 
-/* --- 3. MICRO-INTERACTIONS & EFFETS HOVER (Catégories) --- */
+/* Modificateur permettant à une carte Bento d'occuper deux colonnes d'espace horizontal */
+.bento-w-2 {
+    grid-column: span 2;
+}
+
+/* Micro-interactions avancées sur les cartes Catégories */
 .category-card {
-    background: #ffffff;
+    background: var(--bg-light);
     padding: 30px 20px;
-    border-radius: 12px;
-    text-center: center;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    /* Transition fluide indispensable */
-    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+    border-radius: var(--main-radius);
+    text-align: center;
+    border: 1px solid var(--card-border);
+    /* Transition par courbe de Bézier pour un effet de levée dynamique haut de gamme */
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .category-card .card-icon {
@@ -187,37 +335,72 @@ h1, h2, h3, h4, h5, h6{
     transition: color 0.3s ease;
 }
 
+[data-theme="dark"] .category-card .card-icon {
+    color: #ffffff;
+}
+
 .category-card h3 {
     font-size: 1.25rem;
     margin-bottom: 10px;
 }
 
-/* L'effet Hover demandé par le sujet */
+/* Effets coordonnés lors du survol d'une catégorie */
 .category-card:hover {
-    transform: translateY(-8px); /* Légère élévation verticale */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12); /* Ombre portée plus profonde */
+    transform: translateY(-8px);               /* Soulève la carte de 8 pixels */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);/* Intensifie l'ombre portée pour simuler la hauteur */
     border-color: transparent;
 }
 
 .category-card:hover .card-icon {
-    color: var(--accent-color); /* L'icône réagit également au survol */
+    color: var(--accent-color) !important;       /* L'icône vire à l'orange */
 }
 
-/* --- 4. CAROUSEL DES TÉMOIGNAGES --- */
-.bg-light-section {
-    background-color: var(--bg-light);
+/* Vitrine des Profils Freelance : Gestion des cartes et effets de zoom fluides */
+#freelancers-grid .card {
+    overflow: hidden; /* Obligatoire pour contenir le débordement de l'image lors du zoom d'échelle */
+    background: var(--bg-light);
+    border: 1px solid var(--card-border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
+.card-img-top {
+    height: 450px;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease-in-out; /* Assure la fluidité du grossissement d'image */
+}
+
+#freelancers-grid .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Effet de zoom avant de 6% sur l'image du freelance sans altérer le ratio */
+#freelancers-grid .card:hover .card-img-top {
+    transform: scale(1.06);
+}
+
+/* Trombinoscope de l'Équipe Dirigeante (about.html) */
+#team .card {
+    border: 2px solid transparent !important;
+    transition: all 0.3s ease;
+}
+
+/* Mise en valeur de la bordure orange au survol du membre */
+#team .card:hover {
+    border-color: var(--accent-color) !important;
+}
+
+/* Visuels des Avis Clients (Carousel) & Section d'appel à l'action final (CTA) */
 .testimonial-img {
     width: 90px;
     height: 90px;
-    border-radius: 50%; /* Image ronde */
+    border-radius: 50%;
     object-fit: cover;
     border: 3px solid var(--primary-color);
     background-color: var(--accent-color);
 }
 
-/* --- 5. BANDEAU D'APPEL À L'ACTION (CTA HOME) --- */
 #cta-home {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
 }
@@ -233,22 +416,23 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .btn-cta-light:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Effet d'impulsion léger */
 }
 
-
+/* Texte en dégradé de couleur moderne (Tendance Web 2026) */
 .text-gradient {
     background: linear-gradient(135deg, #ff6b6b, #ffbe0b) !important;
-    -webkit-background-clip: text !important;
+    -webkit-background-clip: text !important; /* Masque le fond dégradé pour n'épouser que la forme des lettres */
     background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    color: transparent !important; /* Ajout d'une sécurité */
+    -webkit-text-fill-color: transparent !important; /* Rend la couleur de police native invisible pour révéler le fond */
+    color: transparent !important;
     display: inline-block;
 }
 
-/* COMMIT 5 : RESPONSIVE DESIGN & MEDIA QUERIES*/
-
-/* --- Ajustements pour tablettes et mobiles (Écrans inférieurs à 992px) --- */
+/* ==========================================================================
+   5. RESPONSIVE DESIGN & MEDIA QUERIES
+   ========================================================================== */
+/* Breakpoint Tablettes (Écrans inférieurs à 992px) */
 @media (max-width: 991.98px) {
     #hero {
         text-align: center;
@@ -256,33 +440,40 @@ h1, h2, h3, h4, h5, h6{
         padding-bottom: 4rem !important;
     }
     
-    /* Réduction de la taille du titre principal pour éviter qu'il ne prenne trop de place */
     .text-gradient {
-        font-size: 2.2rem !important;
+        font-size: 2.2rem !important; /* Réduction proportionnelle du titre principal */
+    }
+    
+    /* Rupture de la Bento Grid : passage d'une disposition en 3 colonnes à 1 seule colonne verticale */
+    .bento-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Les cartes larges s'adaptent et reprennent une largeur unitaire */
+    .bento-w-2 {
+        grid-column: span 1;
     }
 }
 
-/* --- Ajustements spécifiques aux mobiles (Écrans inférieurs à 576px) --- */
+/* Breakpoint Mobiles (Écrans inférieurs à 576px) */
 @media (max-width: 575.98px) {
     .text-gradient {
         font-size: 1.8rem !important;
     }
     
-    /* Espacement des boîtes de statistiques sur petit écran */
     .stat-box {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.5rem; /* Réduction des espaces inter-boîtes sur smartphone */
     }
     
-    /* Ajustement du titre des sections */
     .section-title {
         font-size: 1.5rem !important;
         margin-bottom: 2rem !important;
     }
 }
 
-/* --- Design du bouton Retour en haut (masqué par défaut avec d-none) --- */
+/* Bouton Flottant "Retour en haut" (Géré par l'API Scroll de JS) */
 #back-to-top {
-    z-index: 1030; /* S'assure de passer au-dessus du footer */
+    z-index: 1030; /* Positionne le composant au-dessus des autres éléments et de la navbar */
     border-radius: 50%;
     width: 45px;
     height: 45px;
@@ -290,181 +481,37 @@ h1, h2, h3, h4, h5, h6{
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 #back-to-top:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px); /* Micro-animation d'élévation sur action utilisateur */
 }
 
 #back-to-top i {
     font-size: 1.8rem;
-    line-height: 0;
-}
-
-/* Force toutes les images de cartes à avoir la même hauteur et à se comporter comme un arrière-plan */
-.card-img-top {
-    height: 450px;       /* Ajuste cette hauteur (ex: 220px, 250px) selon tes préférences */
-    object-fit: cover;   /* Coupe l'image proprement sans la déformer pour remplir tout l'espace */
-    object-position: center; /* Centre le visage du freelance dans le cadre */
-}
-/* EFFETS HOVER COMBINÉS POUR LES CARTES FREELANCES (AUTORISÉ ET RECOMMANDÉ)*/
-
-/* 1. Configuration initiale de la carte */
-#freelancers-grid .card {
-    overflow: hidden; /* Empêche l'image de déborder pendant le zoom */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition douce pour la carte */
-}
-
-/* 2. Configuration initiale de l'image */
-#freelancers-grid .card .card-img-top {
-    height: 450px; /* Force la même hauteur pour toutes les images */
-    object-fit: cover; /* Recadre proprement sans déformer */
-    object-position: center; /* Centre les visages */
-    transition: transform 0.3s ease-in-out; /* Transition douce pour le zoom */
-}
-
-/* 3. Effet au survol (Hover) */
-#freelancers-grid .card:hover {
-    transform: translateY(-8px); /* La carte se soulève de 8px */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important; /* L'ombre devient plus visible */
-}
-
-#freelancers-grid .card:hover .card-img-top {
-    transform: scale(1.06); /* L'image à l'intérieur zoome de 6% */
-}
-
-/* Bordure colorée au survol uniquement pour l'équipe dirigeante */
-#team .card {
-    border: 2px solid transparent !important; /* Bordure invisible au départ */
-    transition: all 0.3s ease;
-}
-
-#team .card:hover {
-    border-color: #e87306 !important; /* Devient bleue (couleur primary Bootstrap) au survol */
-}
-
-
-/*BANNIÈRE D'ARRIÈRE-PLAN POUR LA PAGE CONTACT*/
-
-#contact-hero {
-    position: relative;
-    background-image: url('../images/support-contact-us-customer-hotline-260nw-2310238835.webp');
-    background-size: cover;       /* L'image couvre tout l'espace sans se déformer */
-    background-position: center;  /* Centre l'image horizontalement et verticalement */
-    background-repeat: no-repeat;
-    min-height: 250px;            /* Hauteur minimale de la bannière */
-    display: flex;
-    align-items: center;          /* Centre le texte verticalement */
-    overflow: hidden;
-}
-
-/* Superposition sombre (Overlay) pour rendre le texte blanc 100% lisible */
-#contact-hero::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.6); /* Ajuste le 0.6 (plus grand = plus sombre) */
-    z-index: 1;
-}
-
-/* Force le texte à se placer au-dessus de la couche sombre */
-#contact-hero .container {
-    position: relative;
-    z-index: 2;
-}
-
-:root {
-  --bg-color: #ffffff;
-  --text-color: #212529;
-  --section-bg-light: #f8f9fa;
-  --navbar-bg: #212529; /* Fond initial sombre pour correspondre à votre design original */
-  --navbar-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Attribut appliqué par le JavaScript sur la balise <html> ou <body> */
-[data-theme="dark"] {
-  --bg-color: #121212;
-  --text-color: #f8f9fa;
-  --section-bg-light: #1e1e1e;
-  --navbar-bg: #0a0a0a;
-  --navbar-box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
-}
-
-/* Application globale des variables */
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
-  padding-top: 80px; /* Évite que la navbar "fixed-top" chevauche le Hero */
-}
-
-/* Redéfinition des sections avec les variables de thème */
-.bg-light-section {
-  background-color: var(--section-bg-light) !important;
-}
-
-.custom-navbar {
-  background-color: var(--navbar-bg) !important;
-  transition: padding 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-  padding: 20px 0; /* Style de départ large */
-}
-
-/* Classe injectée par JavaScript lors du scroll */
-.custom-navbar.scrolled {
-  padding: 10px 0; /* Effet shrink (réduction de hauteur) */
-  box-shadow: var(--navbar-box-shadow);
-}
-
-/* Ajustement pour le bouton de retour en haut */
-#back-to-top {
-  z-index: 1030;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+    line-height: 0; /* Évite les décalages verticaux internes propres aux icônes Bootstrap Font */
 }
 
 /* ==========================================================================
-   6. ANIMATIONS DE FONDU DYNAMIQUES (UNIQUEMENT SUR INDEX ET ABOUT)
+   6. ANIMATIONS D'APPARITION INTERSECTION OBSERVER
    ========================================================================== */
-
-/* On cible l'identifiant ou une classe spécifique du body.
-   Si tes fichiers HTML n'ont pas d'ID sur le body, ajoute simplement :
-   - <body id="home-page"> dans ton index.html
-   - <body id="about-page"> dans ton about.html
-*/
-
-#home-page main section,
-#about-page main section {
+/* État initial masqué pour l'ensemble des sections principales de l'application */
+#hero, #how-it-works, #categories, #testimonials, #cta-home,
+#history, #team, #values, main section {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(30px); /* Abaisse légèrement les blocs pour préparer l'effet d'élévation */
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    /* will-change informe à l'avance le moteur graphique du navigateur (GPU) 
+       des propriétés modifiées, optimisant radicalement la fluidité (60 FPS) */
     will-change: opacity, transform;
 }
 
-/* Classe d'apparition injectée par le script main.js au scroll */
-#home-page main section.is-visible,
-#about-page main section.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-/* --- ANIMATIONS DE FONDU (COMMIT 7) --- */
-
-/* 1. État initial masqué pour les sections de index.html et about.html */
-#hero, #how-it-works, #categories, #testimonials, #cta-home,
-#history, #team, #values, main section:has(#about-stats) {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-/* 2. État d'apparition lorsque la classe is-visible est injectée par le JavaScript */
+/* État final : Injecté dynamiquement en JavaScript via l'API IntersectionObserver 
+   lorsque l'élément entre dans le champ de vision de l'utilisateur. */
 #hero.is-visible, #how-it-works.is-visible, #categories.is-visible, 
 #testimonials.is-visible, #cta-home.is-visible, #history.is-visible, 
-#team.is-visible, #values.is-visible, main section:has(#about-stats).is-visible {
+#team.is-visible, #values.is-visible, main section.is-visible {
     opacity: 1;
     transform: translateY(0);
 }
